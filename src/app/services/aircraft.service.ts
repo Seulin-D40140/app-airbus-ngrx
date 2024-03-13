@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Host, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Aircraft } from 'src/models/aircraft.model';
@@ -13,8 +13,7 @@ export class AircraftService {
 
   public getAircrafts():Observable<Aircraft[]>
   {
-    let host = Math.random() > 0.5 ? environment.host : environment.unreachableHost;
-    return this.http.get<Aircraft[]>(host+"/aircrafts");
+    return this.http.get<Aircraft[]>(environment.host+"/aircrafts");
   }
 
   public getDesignAircrafts() : Observable<Aircraft[]>
@@ -24,7 +23,7 @@ export class AircraftService {
 
   public getDevelopementAircraft() : Observable<Aircraft[]>
   {
-    return this.http.get<Aircraft[]>(environment.host+"aircrafts?developement=true");
+    return this.http.get<Aircraft[]>(environment.host+"/aircrafts?developement=true");
   }
 
   public getAircraftByMsn(id:number) : Observable<Aircraft>
