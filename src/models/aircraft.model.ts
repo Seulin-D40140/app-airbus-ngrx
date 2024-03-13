@@ -1,5 +1,4 @@
 
-
 export interface Aircraft
 {
     id : number;
