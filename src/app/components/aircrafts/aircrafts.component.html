@@ -1,6 +1,6 @@
 <!--page 18-->
 
-<div class="formgroup">
+<div class="formgroup m-5">
     <ng-container *ngIf="error">
         <div class="p-2 text-danger"> {{error}}</div>
     </ng-container>
@@ -20,15 +20,20 @@
         </ng-container>
 
         <table class="table table-striped">
-            <tr>
-                <th>Id</th><th>Program</th><th>Design</th><th>Developement</th>
-            </tr>
-            <tr *ngFor="let aircraft of result.data">
-                <td>{{aircraft.id}}</td>
-                <td>{{aircraft.prog}}</td>
-                <td>{{aircraft.design}}</td>
-                <td>{{aircraft.developement}}</td>
-            </tr>
+            <thead class="table-success">
+                <tr >
+                    <th>Id</th><th>Program</th><th>Design</th><th>Developement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aircraft of result.data" >
+                    <td>{{aircraft.id}}</td>
+                    <td>{{aircraft.prog}}</td>
+                    <td>{{aircraft.design}}</td>
+                    <td>{{aircraft.developement}}</td>
+                </tr>
+            </tbody>
+            
         </table>
     </ng-container>
 </div>

@@ -28,6 +28,10 @@ export class AircraftService {
 
   public getAircraftByMsn(id:number) : Observable<Aircraft>
   {
-    return this.http.get<Aircraft>(environment.host + "/aicrafts/"+ id);
+    return this.http.get<Aircraft>(environment.host + "/aircrafts/"+ id);
   }
+
+  public getByKeyWord(payload : any)
+  {
+    return this.http.get<Aircraft[]>(environment.host + "/aircrafts?prog_like=" + payload) }
 }

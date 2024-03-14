@@ -5,6 +5,7 @@ import { Aircraft } from 'src/models/aircraft.model';
 import { AppDataState, DataStateEnum } from 'src/app/state/aircraft.state';
 import { Laboratory } from 'src/app/laboratory';
 import { ActionEvent, AircraftActionTypes } from 'src/app/actions/aircraft-action';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
 	selector: 'app-aircrafts',
@@ -19,13 +20,14 @@ export class AircraftsComponent implements OnInit {
 	aircrafts$ : Observable <AppDataState<Aircraft[]>> | null = null
 	error = null
 
-	constructor( private aircraftService : AircraftService ) { 
+	constructor( private aircraftService : AircraftService , private eventService : EventService) { 
 		this.labo = new Laboratory()
 	}
 
 	ngOnInit(): void 
 	{
 		this.labo.tests()
+		this.eventService.eventSubjectObservable.subscribe((actionEvent : ActionEvent) => {this.onActionEvent(actionEvent)})
 	}
 
 	getAllAircrafts()
@@ -57,8 +59,8 @@ export class AircraftsComponent implements OnInit {
 
 	getOnSearch(payload : any)
 	{
-		this.aircrafts$ = this.aircraftService.getAircrafts().pipe(
-			map(data => ({dataState : DataStateEnum.LOADED , data : data.filter( ac => ac.prog.includes(payload))})),
+		this.aircrafts$ = this.aircraftService.getByKeyWord(payload).pipe(
+			map(data => ({dataState : DataStateEnum.LOADED , data : data })),
 			startWith({dataState : DataStateEnum.LOADING}),
 			catchError(err => of({dataState : DataStateEnum.ERROR , errorMessage : err.message}))
 		)
