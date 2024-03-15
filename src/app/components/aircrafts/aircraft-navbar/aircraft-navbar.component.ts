@@ -1,7 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AircraftActionTypes, GetAllAircraftsAction } from 'src/app/ngrx/aircraft-action';
+import { AircraftActionTypes, GetAllAircraftsAction, GetAllDesignAircraftAction, GetAllDevsAircraftAction } from 'src/app/ngrx/aircraft-action';
 import { EventService } from 'src/app/services/event.service';
 
 @Component(
@@ -15,7 +14,6 @@ export class AircraftNavbarComponent implements OnInit {
 
 	value : string = ""
 
-	@Output() eventEmitter : EventEmitter<any> = new EventEmitter()
 
 	constructor( private store : Store<any>) { }
 
@@ -31,11 +29,13 @@ export class AircraftNavbarComponent implements OnInit {
 
 	getDesignedAircrafts()
 	{
+		this.store.dispatch(new GetAllDesignAircraftAction({}))
 		//this.eventService.publishEvent({type : AircraftActionTypes.GET_DESIGNED_AIRCRAFT , payload : null})
 	}
 
 	getDevelopementAircrafts()
 	{
+		this.store.dispatch( new GetAllDevsAircraftAction({}))
 		//this.eventService.publishEvent({type : AircraftActionTypes.GET_DEVELOPMENT_AIRCRAFT , payload : null})
 	}
 	
