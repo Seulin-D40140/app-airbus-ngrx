@@ -19,10 +19,22 @@ export function AircraftsReducer(state : AircraftsState = initState , action : A
         case AircraftActionTypes.GET_ALL_DESIGN_AIRCRAFT :
             console.log("loading design")
             return { ...state , dataState : AircraftStateEnum.LOADING}
+        
+        case AircraftActionTypes.GET_ALL_DESIGN_AIRCRAFT_SUCCESS : 
+            return { ...state , dataState : AircraftStateEnum.LOADED, aircrafts : (<AircraftActions> action).payload}
+
+        case AircraftActionTypes.GET_ALL_DESIGN_AIRCRAFT_ERROR :
+            return { ...state , dataState : AircraftStateEnum.ERROR , errorMessage : (<AircraftActions> action).payload}
 
         case AircraftActionTypes.GET_ALL_DEVS_AIRCRAFT :
             console.log("loading devs")
             return { ...state , dataState : AircraftStateEnum.LOADING}
+
+        case AircraftActionTypes.GET_ALL_DEVS_AIRCRAFT_SUCCESS : 
+            return { ...state , dataState : AircraftStateEnum.LOADED, aircrafts : (<AircraftActions> action).payload}
+
+        case AircraftActionTypes.GET_ALL_DEVS_AIRCRAFT_ERROR :
+            return { ...state , dataState : AircraftStateEnum.ERROR , errorMessage : (<AircraftActions> action).payload}
 
         default :
         return { ...state}

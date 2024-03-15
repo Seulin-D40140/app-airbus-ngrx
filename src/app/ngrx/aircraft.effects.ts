@@ -3,7 +3,7 @@ import { AircraftService } from "../services/aircraft.service";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Observable, catchError, map, mergeMap, of } from "rxjs";
 import { Action } from "@ngrx/store";
-import { AircraftActionTypes, GetAllAircraftsError, GetAllAircraftsSuccess } from "./aircraft-action";
+import { AircraftActionTypes, GetAllAircraftsError, GetAllAircraftsSuccess, GetAllDesignAircraftsError, GetAllDesinAircraftsSuccess, GetAllDevsAircraftsError, GetAllDevsAircraftsSuccess } from "./aircraft-action";
 
 @Injectable ()
 
@@ -17,8 +17,8 @@ export class aircraftsEffects
             mergeMap((action) => 
             {
                 return this.aircraftService.getDesignAircrafts().pipe(
-                    map((aircrafts) => new GetAllAircraftsSuccess(aircrafts)),
-                    catchError ((err) => of(new GetAllAircraftsError(err.message)))
+                    map((aircrafts) => new GetAllDesinAircraftsSuccess(aircrafts)),
+                    catchError ((err) => of(new GetAllDesignAircraftsError(err.message)))
                 )
             })
         )
@@ -43,8 +43,8 @@ export class aircraftsEffects
             mergeMap((action) => 
             {
                 return this.aircraftService.getDevelopementAircraft().pipe(
-                    map((aircrafts) => new GetAllAircraftsSuccess(aircrafts)),
-                    catchError ((err) => of(new GetAllAircraftsError(err.message)))
+                    map((aircrafts) => new GetAllDevsAircraftsSuccess(aircrafts)),
+                    catchError ((err) => of(new GetAllDevsAircraftsError(err.message)))
                 )
             })
         )
