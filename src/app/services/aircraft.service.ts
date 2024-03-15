@@ -9,6 +9,8 @@ import { Aircraft } from 'src/models/aircraft.model';
 })
 export class AircraftService {
 
+  value : string = ""
+  
   constructor( private http : HttpClient) { }
 
   public getAircrafts():Observable<Aircraft[]>

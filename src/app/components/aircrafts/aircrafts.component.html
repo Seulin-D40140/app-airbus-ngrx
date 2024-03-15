@@ -30,7 +30,9 @@
                     <td>{{aircraft.developement}}</td>
                 </tr>
             </tbody>
-            
         </table>
+        <ng-container *ngIf="countAlertAircraft$ | async as countArcrafts">
+            <div class="p-2 text-danger"> number of aircraft design and devs at true {{countArcrafts}} </div>
+        </ng-container>
     </ng-container>
 </div>

@@ -6,6 +6,7 @@ import { AircraftStateEnum, AircraftsState } from 'src/app/ngrx/aircraft.state';
 import { AircraftActionTypes } from 'src/app/ngrx/aircraft-action';
 import { EventService } from 'src/app/services/event.service';
 import { Store } from '@ngrx/store';
+import { selectCountAlertAircraft } from 'src/app/ngrx/aircraft.selectors';
 
 @Component({
 	selector: 'app-aircrafts',
@@ -17,8 +18,12 @@ export class AircraftsComponent implements OnInit {
 	readonly aircraftsStateEnum = AircraftStateEnum
 	aircraftsState$ : Observable <AircraftsState> | null = null
 
+	countAlertAircraft$ : Observable<number> | undefined
 
-	constructor( private store : Store<any>) { }
+	constructor( private store : Store<any>) 
+	{
+		this.countAlertAircraft$ = store.select(selectCountAlertAircraft)
+	}
 
 	ngOnInit(): void 
 	{
