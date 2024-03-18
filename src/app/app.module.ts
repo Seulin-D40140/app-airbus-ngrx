@@ -12,13 +12,17 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { AircraftsReducer } from "./ngrx/aircraft.reducer";
 import { aircraftsEffects } from "./ngrx/aircraft.effects";
+import { AlertComponent } from './components/alert/alert.component';
+import { EntitiesComponent } from './components/entities/entities.component';
 
 @NgModule({
   declarations: 
   [
     AppComponent,
     AircraftsComponent,
-    AircraftNavbarComponent
+    AircraftNavbarComponent,
+    AlertComponent,
+    EntitiesComponent
   ],
   imports: 
   [

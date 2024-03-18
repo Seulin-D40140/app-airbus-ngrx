@@ -19,6 +19,8 @@ export enum AircraftActionTypes
     GET_ALL_SEARCH_AIRCRAFT_SUCCESS = "[Aircrafts] Get All Aircrafts Search Success",
     GET_ALL_SEARCH_AIRCRAFT_ERROR = "[Aircrafts] Get All Aircrafts Search Error",
 
+    ADDONE = "[Operation] Add One",
+    REMOVEONE = "[Operation] remove One"
 }
 
 export class GetAllAircraftsAction implements Action

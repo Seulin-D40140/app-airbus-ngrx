@@ -1,5 +1,6 @@
 {
-    "aircrafts": [
+    "aircrafts": 
+    [
         {
             "id": 1,
             "prog": "A350",
@@ -29,6 +30,16 @@
             "prog": "A330",
             "design": true,
             "developement": true
+        }
+    ],
+
+    "entities" :
+    [
+        {
+            "id": 1,
+            "name": "compas",
+            "categorie": "navigation",
+            "price": 5000
         }
     ]
 }

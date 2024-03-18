@@ -1,0 +1,23 @@
+<div class="formgroup">
+    <app-aircraft-navbar></app-aircraft-navbar>
+    <ng-container>
+        <td><button class="btn btn-danger" routerLink="/aircrafts">retour</button></td>
+        <table class="table table-striped">
+            <thead class="table-success">
+                <tr >
+                    <th>Id</th><th>Name</th><th>Categories</th><th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let entity of getEtities()" >
+                    <td>{{entity.id}}</td>
+                    <td>{{entity.name}}</td>
+                    <td>{{entity.categorie}}</td>
+                    <td>{{entity.price}}</td>
+                    <td><button class="btn btn-outline-info" (click)="addEntity(entity)">add</button></td>
+                    <td><button class="btn btn-outline-danger" (click)="removeEntity(entity.id)">rmv</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>
